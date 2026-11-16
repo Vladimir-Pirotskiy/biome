@@ -2341,6 +2341,7 @@ dependencies = [
  "camino",
  "codspeed-criterion-compat",
  "filetime",
+ "indexmap",
  "insta",
  "mimalloc",
  "rustc-hash 2.1.3",

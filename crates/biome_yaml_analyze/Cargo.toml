@@ -18,7 +18,7 @@ name    = "yaml_analyze"
 biome_analyze            = { workspace = true }
 biome_analyze_macros     = { workspace = true }
 biome_console            = { workspace = true }
-biome_deserialize        = { workspace = true }
+biome_deserialize        = { workspace = true, features = ["indexmap", "yaml"] }
 biome_deserialize_macros = { workspace = true }
 biome_diagnostics        = { workspace = true }
 biome_languages          = { workspace = true, features = ["lang_yaml"] }
@@ -28,6 +28,7 @@ biome_suppression        = { workspace = true }
 biome_yaml_factory       = { workspace = true }
 biome_yaml_syntax        = { workspace = true }
 camino                   = { workspace = true }
+indexmap                 = { workspace = true }
 rustc-hash               = { workspace = true }
 schemars                 = { workspace = true, optional = true }
 serde                    = { workspace = true, features = ["derive"] }

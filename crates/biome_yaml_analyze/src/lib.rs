@@ -1,6 +1,7 @@
 #![deny(clippy::use_self)]
 
 mod assist;
+pub mod github_workflow;
 mod lint;
 mod registry;
 mod suppression;
