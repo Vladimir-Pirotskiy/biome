@@ -704,6 +704,8 @@ pub enum RuleDomain {
     Playwright,
     /// Rules that require type inference
     Types,
+    /// GitHub actions rules
+    GitHub,
 }
 
 impl Display for RuleDomain {
@@ -726,6 +728,7 @@ impl Display for RuleDomain {
             Self::Turborepo => fmt.write_str("turborepo"),
             Self::Playwright => fmt.write_str("playwright"),
             Self::Types => fmt.write_str("types"),
+            Self::GitHub => fmt.write_str("github"),
         }
     }
 }
@@ -779,6 +782,7 @@ impl RuleDomain {
             Self::Playwright => &[&("@playwright/test", ">=1.0.0")],
             Self::Types => &[],
             Self::Drizzle => &[&("drizzle-orm", ">=0.9.0")],
+            Self::GitHub => &[],
         }
     }
 
@@ -824,6 +828,7 @@ impl RuleDomain {
             Self::Playwright => &["test", "expect"],
             Self::Types => &[],
             Self::Drizzle => &[],
+            Self::GitHub => &[],
         }
     }
 
@@ -845,6 +850,7 @@ impl RuleDomain {
             Self::Playwright => "playwright",
             Self::Types => "types",
             Self::Drizzle => "drizzle",
+            Self::GitHub => "github",
         }
     }
 
@@ -894,6 +900,7 @@ impl RuleDomain {
                 "This domain contains rules that perform project-level analysis. This includes our module graph for dependency resolution. When enabling rules that belong to this domain, Biome will scan the entire project, *and it will enable the inference engine to resolve and flat types*. The scanning phase will have a performance impact on the linting process. See the documentation on our [scanner](/internals/architecture/#scanner) to learn more about the scanner."
             }
             Self::Drizzle => "Use this domain with projects using Drizzle.",
+            Self::GitHub => "Use this domain with GitHub actions.",
         }
     }
 }
@@ -919,6 +926,7 @@ impl FromStr for RuleDomain {
             "playwright" => Ok(Self::Playwright),
             "types" => Ok(Self::Types),
             "drizzle" => Ok(Self::Drizzle),
+            "github" => Ok(Self::GitHub),
             _ => Err("Invalid rule domain"),
         }
     }
